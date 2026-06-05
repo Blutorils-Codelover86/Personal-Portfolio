@@ -1,0 +1,1018 @@
+/* ==========================================================================
+   TACTILE retro-tech DESIGN SYSTEM (CRT MONITOR & DASHBOARD)
+   ========================================================================== */
+
+/* THEME SPECIFIC VALUES */
+
+/* 1. CYBER BLUEPRINT THEME (DEFAULT) */
+.theme-default {
+    --bg-grid: #e2eeff;
+    --color-grid-line: rgba(0, 108, 255, 0.12);
+    
+    --color-accent: #006cff;
+    --color-accent-glow: rgba(0, 108, 255, 0.45);
+    --color-accent-dim: rgba(0, 108, 255, 0.2);
+    --color-casing: #cbdcf8;
+    --color-bezel: #a9c5f5;
+    
+    --screen-bg: #030a1c;
+    --screen-text: #00d2ff;
+    --screen-text-glow: rgba(0, 210, 255, 0.5);
+    
+    --text-primary: #0a1c3e;
+    --text-secondary: #4a6699;
+}
+
+/* 2. GREEN MATRIX PHOSPHOR THEME */
+.theme-green {
+    --bg-grid: #0f150f;
+    --color-grid-line: rgba(51, 255, 51, 0.05);
+    
+    --color-accent: #33ff33;
+    --color-accent-glow: rgba(51, 255, 51, 0.45);
+    --color-accent-dim: rgba(51, 255, 51, 0.2);
+    --color-casing: #182618;
+    --color-bezel: #0e190e;
+    
+    --screen-bg: #030803;
+    --screen-text: #39ff14;
+    --screen-text-glow: rgba(57, 255, 20, 0.5);
+    
+    --text-primary: #d5ffd5;
+    --text-secondary: #74aa74;
+}
+
+/* 3. AMBER CRT THEME */
+.theme-amber {
+    --bg-grid: #18110b;
+    --color-grid-line: rgba(255, 176, 0, 0.05);
+    
+    --color-accent: #ffb000;
+    --color-accent-glow: rgba(255, 176, 0, 0.5);
+    --color-accent-dim: rgba(255, 176, 0, 0.2);
+    --color-casing: #2e1d11;
+    --color-bezel: #1c110a;
+    
+    --screen-bg: #0e0601;
+    --screen-text: #ffaa00;
+    --screen-text-glow: rgba(255, 170, 0, 0.5);
+    
+    --text-primary: #ffeed5;
+    --text-secondary: #b6916c;
+}
+
+/* GLOBAL RESETS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: cell;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-grid);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    color: var(--text-primary);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+    border-left: 1px solid var(--color-accent);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border: 1px solid var(--bg-grid);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-glow);
+}
+
+/* TOP STATUS BAR */
+.sys-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-accent);
+    color: #ffffff;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-bottom: 2px solid #000000;
+    height: 38px;
+    z-index: 100;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pulse-led {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.pulse-led.green {
+    background: #00ff66;
+    box-shadow: 0 0 6px #00ff66;
+    animation: led-blink 1.2s infinite;
+}
+@keyframes led-blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* GRID WORKSPACE WRAPPER */
+.grid-workspace {
+    width: 100%;
+    height: calc(100vh - 38px);
+    overflow-y: auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+    /* Graphic blueprint matrix grid backdrop */
+    background-image: 
+        linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    scroll-behavior: smooth;
+}
+
+.panel-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ==========================================================================
+   PHYSICAL CRT MONITOR CASING
+   ========================================================================== */
+
+.hero-split-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.crt-monitor-casing {
+    width: 100%;
+    max-width: 500px;
+    background: var(--color-casing);
+    border: 3px solid #000000;
+    border-radius: 20px 20px 8px 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 
+        10px 10px 0px rgba(0, 0, 0, 0.15),
+        inset 1px 1px 1px rgba(255,255,255,0.4),
+        inset -1px -1px 2px rgba(0,0,0,0.3);
+    transition: background-color 0.4s ease;
+}
+
+/* Ventilation Slots on top */
+.ventilation-slots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+.ventilation-slots span {
+    width: 35px;
+    height: 4px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px #000;
+}
+
+/* Screen Bezel Outer border */
+.crt-bezel {
+    background: var(--color-bezel);
+    border: 3px solid #000;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.2), inset -2px -2px 4px rgba(0,0,0,0.4);
+    transition: background-color 0.4s ease;
+}
+
+/* Rounded CRT Screen Glass container */
+.crt-screen-container {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #000;
+    background: var(--screen-bg);
+    box-shadow: 
+        inset 0 0 30px rgba(0,0,0,0.9),
+        0 0 10px var(--color-accent-dim);
+    transition: filter 0.3s ease, background-color 0.4s ease;
+}
+
+/* CRT Visual Filters */
+.scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.22) 50%
+    );
+    background-size: 100% 4px;
+}
+
+.flicker {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 9;
+    pointer-events: none;
+    background: rgba(0, 210, 255, 0.008);
+    animation: monitor-flicker 0.12s infinite;
+}
+@keyframes monitor-flicker {
+    0% { opacity: 0.96; }
+    50% { opacity: 1.04; }
+    100% { opacity: 0.96; }
+}
+
+.noise-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 8;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.screen-curve-vignette {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 11;
+    pointer-events: none;
+    box-shadow: inset 0 0 35px rgba(0,0,0,0.9), inset 0 0 10px rgba(0,0,0,0.95);
+}
+
+/* Glass glare reflection */
+.crt-screen-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 50%);
+    pointer-events: none;
+    z-index: 12;
+}
+
+/* Inside Screen Text/Log Content */
+.crt-screen-content {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-retro);
+    color: var(--screen-text);
+    text-shadow: 0 0 5px var(--screen-text-glow);
+}
+
+.crt-screen-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+    padding-bottom: 4px;
+    font-weight: bold;
+    font-family: var(--font-mono);
+}
+
+.crt-screen-body {
+    flex: 1;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.console-boot-log {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    line-height: 1.3;
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+.profile-dashboard {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.profile-avatar-frame {
+    width: 58px;
+    height: 58px;
+    border: 2px solid var(--color-accent);
+    position: relative;
+    background: #000;
+    overflow: hidden;
+}
+.profile-avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+/* Horizontal scan line sweep on avatar */
+.raster-sweep {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: linear-gradient(transparent 95%, var(--screen-text) 95%);
+    background-size: 100% 12px;
+    animation: raster-scroll 4s linear infinite;
+    opacity: 0.3;
+}
+@keyframes raster-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 58px; }
+}
+
+.profile-specs {
+    flex: 1;
+}
+
+.name-header {
+    font-family: var(--font-retro);
+    font-size: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+.role-subtitle {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.spec-matrix {
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    line-height: 1.3;
+}
+.spec-matrix .lbl {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+.spec-matrix .val {
+    color: #fff;
+}
+
+.terminal-prompt-area {
+    border-top: 1px dashed rgba(0, 210, 255, 0.2);
+    padding-top: 6px;
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.prompt-cursor {
+    animation: prompt-blink 0.9s infinite steps(2);
+    font-weight: bold;
+}
+@keyframes prompt-blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Screen OFF state */
+.screen-off .crt-screen-container {
+    filter: brightness(0);
+    background: #000 !important;
+    box-shadow: inset 0 0 40px #000;
+}
+.screen-off .scanlines, .screen-off .flicker, .screen-off .noise-overlay {
+    display: none;
+}
+
+/* ==========================================================================
+   CRT LOWER CONTROL BEZEL
+   ========================================================================== */
+
+.crt-controls-panel {
+    border: 3px solid #000;
+    border-top: none;
+    background: var(--color-casing);
+    padding: 10px 14px;
+    border-radius: 0 0 14px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    transition: background-color 0.4s ease;
+}
+
+.brand-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #000;
+    border: 1.5px solid #000;
+    padding: 1px 6px;
+    background: #ffffff;
+    box-shadow: 2px 2px 0px #000;
+}
+
+/* Knob dials */
+.bezel-dials {
+    display: flex;
+    gap: 12px;
+}
+
+.dial-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35px;
+}
+
+.dial-knob {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4a5568;
+    border: 2px solid #000;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+/* Tiny indicator dot on knob */
+.dial-knob::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5px;
+    height: 4px;
+    background: #fff;
+    border-radius: 1px;
+}
+
+.dial-label {
+    font-size: 0.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-top: 2px;
+}
+
+/* Tactile Power Switch */
+.power-button-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.power-switch {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #000;
+    background: #a0aec0;
+    position: relative;
+    box-shadow: 0 3px 0 #000;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.power-switch .switch-cap {
+    width: 14px;
+    height: 14px;
+    background: #f56565;
+    border: 1px solid #000;
+}
+.power-switch.active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+.power-switch.active .switch-cap {
+    background: #48bb78;
+}
+
+.power-label {
+    font-size: 0.55rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.power-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f56565;
+    border: 1.5px solid #000;
+}
+.power-led.active {
+    background: #48bb78;
+    box-shadow: 0 0 5px #48bb78;
+}
+
+/* ==========================================================================
+   BLUEPRINT SIDE SPEC CARD
+   ========================================================================== */
+
+.blueprint-info-widget {
+    border: 3px solid var(--color-accent);
+    box-shadow: 8px 8px 0px var(--color-accent);
+    background: rgba(255,255,255,0.75);
+    display: flex;
+    flex-direction: column;
+}
+
+.widget-header {
+    background: var(--color-accent);
+    color: #ffffff;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #000;
+}
+
+.widget-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.grid-card {
+    border: 1.5px dashed var(--color-accent);
+    padding: 12px;
+    background: rgba(255,255,255,0.5);
+}
+.grid-card h4 {
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: var(--color-accent);
+}
+.grid-card p {
+    font-size: 0.65rem;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.diag-list {
+    list-style: none;
+    font-size: 0.65rem;
+    line-height: 1.4;
+}
+.diag-list span {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.interactive-alert-strip {
+    font-size: 0.65rem;
+    font-weight: bold;
+    background: var(--color-accent-dim);
+    border: 1.5px solid var(--color-accent);
+    padding: 8px 10px;
+}
+.alert-arrow {
+    color: var(--color-accent);
+    animation: arrow-blink 0.8s infinite;
+}
+
+/* ==========================================================================
+   TECHNICAL WINDOW BOXES (ACHIEVEMENTS, AMBITIONS, CONTACT)
+   ========================================================================== */
+
+.tech-window {
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0px var(--color-accent);
+    background: rgba(255,255,255,0.85);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.theme-green .tech-window, .theme-amber .tech-window {
+    background: rgba(20,30,20,0.8);
+    border-color: var(--color-accent);
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+    color: var(--text-primary);
+}
+
+.tech-window:hover {
+    box-shadow: 8px 8px 0px #000;
+}
+
+.tech-window-header {
+    background: #000;
+    color: #fff;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+.theme-green .tech-window-header, .theme-amber .tech-window-header {
+    background: var(--color-accent-dim);
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+}
+
+.win-title {
+    flex: 1;
+}
+
+.win-decorations {
+    display: flex;
+    gap: 4px;
+}
+.win-decorations span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+}
+
+.tech-window-body {
+    padding: 20px;
+}
+
+.window-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    border-bottom: 1px dashed var(--color-grid-line);
+    padding-bottom: 4px;
+}
+
+/* ==========================================================================
+   ACHIEVEMENTS TABLE
+   ========================================================================== */
+
+.custom-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    text-align: left;
+}
+
+.grid-table th {
+    background: var(--color-accent-dim);
+    border: 2px solid #000;
+    padding: 8px 12px;
+    font-weight: bold;
+    color: var(--color-accent);
+}
+.theme-green .grid-table th, .theme-amber .grid-table th {
+    border-color: var(--color-accent);
+}
+
+.grid-table td {
+    border: 2px solid #000;
+    padding: 10px 12px;
+}
+.theme-green .grid-table td, .theme-amber .grid-table td {
+    border-color: var(--color-accent);
+    background: rgba(0,0,0,0.2);
+}
+
+.grid-table tr:hover td {
+    background: var(--color-accent-dim);
+    color: #000;
+}
+.theme-green .grid-table tr:hover td, .theme-amber .grid-table tr:hover td {
+    color: #fff;
+}
+
+.col-highlight {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.status-tag {
+    font-weight: bold;
+    font-size: 0.7rem;
+}
+.status-tag.success {
+    color: #48bb78;
+}
+.status-tag.progress {
+    color: #dd6b20;
+    animation: text-blink 1.2s infinite;
+}
+@keyframes text-blink {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ==========================================================================
+   AMBITIONS & SKILLS MATRIX
+   ========================================================================== */
+
+.grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.sub-heading {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 14px;
+    color: var(--color-accent);
+}
+
+.quest-log-card {
+    border: 2px solid #000;
+    background: #ffffff;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    position: relative;
+    box-shadow: 4px 4px 0px #000;
+}
+.theme-green .quest-log-card, .theme-amber .quest-log-card {
+    background: rgba(0,0,0,0.3);
+    border-color: var(--color-accent);
+    box-shadow: 3px 3px 0px var(--color-accent);
+}
+
+.quest-log-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.quest-number {
+    color: var(--color-accent);
+}
+
+.quest-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.quest-summary {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+/* Blocky Grid Progress bar */
+.block-progress-container {
+    position: relative;
+    height: 12px;
+    background: #000;
+    border: 1px solid var(--color-accent);
+}
+
+.block-progress-bar {
+    height: 100%;
+    background: var(--color-accent);
+}
+
+.block-progress-label {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.55rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* Skills upgrade list */
+.matrix-list {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.matrix-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--color-grid-line);
+    font-size: 0.75rem;
+}
+
+.matrix-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--color-accent);
+    background: transparent;
+}
+.dot.filled {
+    background: var(--color-accent);
+    box-shadow: 0 0 4px var(--color-accent-glow);
+}
+
+.system-logs-box {
+    background: #000;
+    border: 1.5px solid var(--color-accent);
+    padding: 10px;
+    color: var(--screen-text);
+    font-family: var(--font-retro);
+    font-size: 0.8rem;
+    min-height: 50px;
+    box-shadow: inset 0 0 5px rgba(0,210,255,0.3);
+}
+.sys-log-line {
+    margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   CONTACT TRANSMITTER
+   ========================================================================== */
+
+.frequency-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.freq-btn {
+    display: flex;
+    align-items: center;
+    border: 2px solid #000;
+    background: #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.75rem;
+    box-shadow: 4px 4px 0px #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.theme-green .freq-btn, .theme-amber .freq-btn {
+    background: rgba(0,0,0,0.2);
+    border-color: var(--color-accent);
+    box-shadow: 3px 3px 0px var(--color-accent);
+    color: #fff;
+}
+
+.freq-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+.theme-green .freq-btn:hover, .theme-amber .freq-btn:hover {
+    box-shadow: 5px 5px 0px var(--color-accent);
+}
+
+.proto-prefix {
+    font-weight: bold;
+    color: var(--color-accent);
+    margin-right: 10px;
+}
+
+/* Form details */
+.retro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.75rem;
+}
+.form-row.flex-col {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.form-row label {
+    width: 100px;
+    font-weight: bold;
+    color: var(--text-secondary);
+}
+
+.form-row input, .form-row textarea {
+    flex: 1;
+    background: #ffffff;
+    border: 2px solid #000;
+    padding: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #000000;
+    width: 100%;
+}
+.theme-green .form-row input, .theme-amber .form-row input,
+.theme-green .form-row textarea, .theme-amber .form-row textarea {
+    background: rgba(0,0,0,0.4);
+    border-color: var(--color-accent);
+    color: #fff;
+}
+
+.form-row input:focus, .form-row textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 6px var(--color-accent-glow);
+}
+
+/* Submit button with Y2K double arrows */
+.glowing-tx-btn {
+    border: 2px solid #000;
+    background: #ffffff;
+    padding: 10px;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 4px 4px 0px #000;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.theme-green .glowing-tx-btn, .theme-amber .glowing-tx-btn {
+    border-color: var(--color-accent);
+    background: var(--color-accent-dim);
+    color: var(--color-accent);
+    box-shadow: 3px 3px 0px var(--color-accent);
+}
+
+.glowing-tx-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0px #000;
+    background: var(--color-accent-dim);
+}
+.glowing-tx-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.btn-arrow-glow {
+    color: var(--color-accent);
+    animation: arrow-blink 0.8s infinite;
+}
+
+.tx-status-log {
+    margin-top: 10px;
+    font-size: 0.7rem;
+    min-height: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUTS
+   ========================================================================== */
+
+@media (max-width: 800px) {
+    .hero-split-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

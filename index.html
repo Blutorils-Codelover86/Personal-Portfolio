@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRT_TERM // STUDENT PORTFOLIO</title>
+    <!-- Google Fonts for retro tech and mono space looks -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Outfit:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+    
+    <!-- Top System Status Header Bar -->
+    <header class="sys-bar">
+        <div class="sys-bar-left">
+            <span class="pulse-led green"></span>
+            <span class="sys-title">SYS_TERM // DIRECTORY: portfolio_v3.bin</span>
+        </div>
+        <div class="sys-bar-center">
+            <span class="sys-uptime">UPTIME: 00:00:00</span>
+        </div>
+        <div class="sys-bar-right">
+            <span class="sys-time">DATE: 12/17 // 03:27</span>
+        </div>
+    </header>
+
+    <!-- Main Grid Workspace Background (Blueprint graphpaper styling) -->
+    <main class="grid-workspace">
+        
+        <!-- SECTION 1: HERO / SYSTEM BIOGRAPHY (CRT MONITOR CONSOLE) -->
+        <section id="hero-section" class="panel-section">
+            <div class="hero-split-layout">
+                
+                <!-- Left: Physical CRT Terminal Monitor -->
+                <div class="crt-monitor-casing">
+                    <div class="ventilation-slots"><span></span><span></span><span></span><span></span></div>
+                    
+                    <!-- CRT Monitor Bezel & Curved Screen -->
+                    <div class="crt-bezel">
+                        <div class="crt-screen-container" id="monitor-screen">
+                            
+                            <!-- CRT Visual Grid Filters -->
+                            <div class="scanlines"></div>
+                            <div class="flicker"></div>
+                            <div class="noise-overlay"></div>
+                            <div class="screen-curve-vignette"></div>
+
+                            <!-- Screen Contents (Backlit LCD Console look) -->
+                            <div class="crt-screen-content">
+                                <div class="crt-screen-header">
+                                    <span>[ PORTFOLIO_MONITOR_v1.0 ]</span>
+                                    <span class="blink-fast">● ONLINE</span>
+                                </div>
+                                
+                                <div class="crt-screen-body">
+                                    <div class="console-boot-log">
+                                        <div class="boot-line text-blue">// INITIATING BIOS CONFIG BOOT...</div>
+                                        <div class="boot-line text-blue">CPU: RETRO-Y2K PROCESSOR // RAM: 640KB OK</div>
+                                        <div class="boot-line text-blue">SYSTEM RESIDENCE: student_profile.sys</div>
+                                    </div>
+                                    
+                                    <div class="profile-dashboard">
+                                        <div class="profile-avatar-frame">
+                                            <img src="assets/avatar.png" alt="Pixel Dev Avatar" onerror="this.src='https://api.dicebear.com/7.x/pixel-art/svg?seed=vivaa&backgroundColor=003366'">
+                                            <div class="raster-sweep"></div>
+                                        </div>
+                                        <div class="profile-specs">
+                                            <h2 class="name-header">[YOUR NAME]</h2>
+                                            <p class="role-subtitle">// CODENAME: STUDENT_DEVELOPER</p>
+                                            <div class="spec-matrix">
+                                                <div><span class="lbl">CLASS:</span> <span class="val">FULL-STACK DISCIPLE</span></div>
+                                                <div><span class="lbl">FOCUS:</span> <span class="val">INTERACTIVE SHADERS</span></div>
+                                                <div><span class="lbl">ALIGN:</span> <span class="val">CREATIVE CHAOTIC</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="terminal-prompt-area">
+                                        <p class="prompt-text">> <span id="typewriter-text">Hi, I'm a student developer designing interactive retro-futuristic digital spaces. Scroll down or use dials to unlock logs.</span><span class="prompt-cursor">_</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Bezel Lower Control Strip (Knobs and Power Button) -->
+                    <div class="crt-controls-panel">
+                        <div class="brand-badge animate-pulse">ZERO_CLOCK</div>
+                        
+                        <div class="bezel-dials">
+                            <!-- Brightness dial -->
+                            <div class="dial-container" id="dial-brightness" title="Adjust Brightness">
+                                <div class="dial-knob"></div>
+                                <span class="dial-label">BRIGHT</span>
+                            </div>
+                            <!-- Contrast dial -->
+                            <div class="dial-container" id="dial-theme" title="Cycle Theme Colors">
+                                <div class="dial-knob"></div>
+                                <span class="dial-label">THEME</span>
+                            </div>
+                            <!-- Sound feedback dial -->
+                            <div class="dial-container" id="dial-audio" title="Toggle Sound Feedback">
+                                <div class="dial-knob"></div>
+                                <span class="dial-label">AUDIO</span>
+                            </div>
+                        </div>
+
+                        <!-- Physical Power Button -->
+                        <div class="power-button-container">
+                            <button id="power-btn" class="power-switch active" title="Toggle CRT Screen Power">
+                                <span class="switch-cap"></span>
+                            </button>
+                            <span class="power-label">POWER</span>
+                            <span class="power-led active" id="power-indicator"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Blueprint Info Widget & Side specs -->
+                <div class="blueprint-info-widget">
+                    <div class="widget-header">
+                        <h3>▶ SYSTEM_STATUS_REPORT.TXT</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="diagram-grid">
+                            <div class="grid-card">
+                                <h4>CORE DIRECTIVES</h4>
+                                <p>1. Code clean, scalable interfaces.</p>
+                                <p>2. Study hardware-accelerated rendering.</p>
+                                <p>3. Build tactical retro-tech designs.</p>
+                            </div>
+                            <div class="grid-card">
+                                <h4>DIAGNOSTICS</h4>
+                                <ul class="diag-list">
+                                    <li><span>GUI STABILITY:</span> 99.8%</li>
+                                    <li><span>GRID MATRIX:</span> CONNECTED</li>
+                                    <li><span>CRT REFRESHT:</span> 60Hz</li>
+                                    <li><span>SOUND DRIVER:</span> SYNTH_WEBAUDIO</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="interactive-alert-strip">
+                            <span class="alert-arrow">▶</span> ADJUST MONITOR DIALS TO OPTIMIZE THE DISPLAY INTERACTIVELY.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: ACHIEVEMENTS LOG (HIGH CONTRAST MONOSPACED BOARD) -->
+        <section id="achievements-section" class="panel-section">
+            <div class="tech-window achievements-window">
+                <div class="tech-window-header">
+                    <span class="win-icon">🏆</span>
+                    <span class="win-title">DATABASE_ACHIEVEMENTS.LOG</span>
+                    <div class="win-decorations"><span></span><span></span><span></span></div>
+                </div>
+                <div class="tech-window-body">
+                    <p class="window-desc">// HISTORICAL LOG OF UNLOCKED ATTAINMENTS & MILESTONES:</p>
+                    
+                    <div class="custom-table-container">
+                        <table class="grid-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>MILESTONE / RECOGNITION</th>
+                                    <th>CLASSIFICATION</th>
+                                    <th>TIMELINE</th>
+                                    <th>VERIFICATION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-highlight">AC-01</td>
+                                    <td class="text-glow">Hackathon Winner // Best Web UI Innovation</td>
+                                    <td>Competition</td>
+                                    <td>DEC 2025</td>
+                                    <td><span class="status-tag success">[ UNLOCKED ]</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-highlight">AC-02</td>
+                                    <td class="text-glow">Dean's Honor Scholarship (Top 5% Rank)</td>
+                                    <td>Education</td>
+                                    <td>OCT 2025</td>
+                                    <td><span class="status-tag success">[ UNLOCKED ]</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-highlight">AC-03</td>
+                                    <td class="text-glow">Core Contributor (Open Source Web Audio API Tooling)</td>
+                                    <td>Development</td>
+                                    <td>AUG 2025</td>
+                                    <td><span class="status-tag progress">[ SYNCING 90% ]</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-highlight">AC-04</td>
+                                    <td class="text-glow">WASM Cloud Systems Associate Certification</td>
+                                    <td>Certification</td>
+                                    <td>JUL 2025</td>
+                                    <td><span class="status-tag success">[ UNLOCKED ]</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: AMBITIONS (MODULAR MATRIX PROGRESS BLOCKS) -->
+        <section id="ambitions-section" class="panel-section">
+            <div class="tech-window ambitions-window">
+                <div class="tech-window-header">
+                    <span class="win-icon">🚀</span>
+                    <span class="win-title">QUEST_DIRECTIVES_AMBITIONS.SYS</span>
+                    <div class="win-decorations"><span></span><span></span><span></span></div>
+                </div>
+                <div class="tech-window-body grid-2col">
+                    
+                    <!-- Ambitions Quest List -->
+                    <div class="ambition-quests">
+                        <h4 class="sub-heading">// ACTIVE DEVELOPMENT QUESTS</h4>
+                        
+                        <div class="quest-log-card">
+                            <div class="quest-log-header">
+                                <span class="quest-number">QUEST #01</span>
+                                <span class="xp-gain">+3000 XP</span>
+                            </div>
+                            <h5 class="quest-name">Master WebGL Shader Programming</h5>
+                            <p class="quest-summary">Create procedural fluid dynamics and canvas ripples with vertex/fragment structures.</p>
+                            <div class="block-progress-container">
+                                <div class="block-progress-bar" style="width: 75%;"></div>
+                                <span class="block-progress-label">75%</span>
+                            </div>
+                        </div>
+
+                        <div class="quest-log-card">
+                            <div class="quest-log-header">
+                                <span class="quest-number">QUEST #02</span>
+                                <span class="xp-gain">+4500 XP</span>
+                            </div>
+                            <h5 class="quest-name">Architect Offline-First P2P Sync</h5>
+                            <p class="quest-summary">Develop peer-to-peer data nodes utilizing WebRTC and CRDT document arrays.</p>
+                            <div class="block-progress-container">
+                                <div class="block-progress-bar" style="width: 40%;"></div>
+                                <span class="block-progress-label">40%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Matrix -->
+                    <div class="skills-matrix-panel">
+                        <h4 class="sub-heading">// COMPILER SKILL MATRIX UPGRADES</h4>
+                        
+                        <ul class="matrix-list">
+                            <li>
+                                <span class="matrix-skill-name">JavaScript Core (ESNext)</span>
+                                <div class="matrix-dots">
+                                    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="matrix-skill-name">Rust / WASM Compiling</span>
+                                <div class="matrix-dots">
+                                    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="matrix-skill-name">CSS Graphic Laying (Grid/Flex)</span>
+                                <div class="matrix-dots">
+                                    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="matrix-skill-name">Interactive Audio (Web Audio DSP)</span>
+                                <div class="matrix-dots">
+                                    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="system-logs-box">
+                            <div class="sys-log-line">> WASM compiler pipeline active.</div>
+                            <div class="sys-log-line">> Web Audio DSP module loaded in background.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CONTACT & TRANSMISSION UNIT (ENCRYPTED COMMUNICATIONS) -->
+        <section id="contact-section" class="panel-section">
+            <div class="tech-window contact-window">
+                <div class="tech-window-header">
+                    <span class="win-icon">📡</span>
+                    <span class="win-title">COMMUNICATIONS_TERMINAL.IO</span>
+                    <div class="win-decorations"><span></span><span></span><span></span></div>
+                </div>
+                <div class="tech-window-body grid-2col">
+                    
+                    <!-- Safe frequencies -->
+                    <div class="frequencies-panel">
+                        <h4 class="sub-heading">// AVAILABLE TRANSMISSION PROTOCOLS</h4>
+                        <p class="panel-intro-text">Select an active node connection to bypass secure terminal:</p>
+                        
+                        <div class="frequency-links">
+                            <a href="mailto:placeholder@example.com" class="freq-btn" data-proto="SMTP">
+                                <span class="proto-prefix">[SMTP]</span>
+                                <span class="proto-addr">placeholder@example.com</span>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="freq-btn" data-proto="SSH">
+                                <span class="proto-prefix">[SSH]</span>
+                                <span class="proto-addr">github.com/placeholder</span>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="freq-btn" data-proto="SSL">
+                                <span class="proto-prefix">[SSL]</span>
+                                <span class="proto-addr">linkedin.com/in/placeholder</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Form Transmitter -->
+                    <div class="transmission-transmitter">
+                        <h4 class="sub-heading">// CONFIGURE DUPLEX SIGNAL TRANSMITTER</h4>
+                        
+                        <form id="transmitter-form" class="retro-form">
+                            <div class="form-row">
+                                <label for="tx-sender">SENDER_ID:</label>
+                                <input type="text" id="tx-sender" placeholder="ENTER YOUR NAME" required autocomplete="off">
+                            </div>
+                            <div class="form-row">
+                                <label for="tx-return">RETURN_ADDR:</label>
+                                <input type="email" id="tx-return" placeholder="ENTER YOUR@EMAIL.COM" required autocomplete="off">
+                            </div>
+                            <div class="form-row flex-col">
+                                <label for="tx-payload">MESSAGE PAYLOAD:</label>
+                                <textarea id="tx-payload" placeholder="TYPE DEVIATION TRANSMISSION LOG HERE..." rows="4" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="glowing-tx-btn">
+                                <span class="btn-cap">INITIALIZE SIGNAL TRANSMISSION</span>
+                                <span class="btn-arrow-glow">▶▶</span>
+                            </button>
+                        </form>
+                        
+                        <!-- Transmit status logs -->
+                        <div class="tx-status-log" id="tx-status-log"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
