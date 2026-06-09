@@ -2,342 +2,338 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO_CLOCK // PORTFOLIO</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=VT323&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO — ZERO_CLOCK 2000</title>
+
+  <!-- Retro-Magazine Google Fonts: EB Garamond (Editorial Serif), Unbounded (Wide Sans Header), Space Grotesk (Labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@400;600;700&family=Unbounded:wght@400;700;900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- WALKMAN OUTER DEVICE SHELL -->
-    <div class="wm-device">
+  <!-- SVG Gritty Noise Filter (Print Texture) -->
+  <svg class="svg-noise-source">
+    <filter id="gritty-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" />
+      <feComposite operator="in" in2="SourceGraphic" />
+    </filter>
+  </svg>
 
-        <!-- TOP CHROME HEADER STRIP -->
-        <div class="wm-header">
-            <div class="wm-logo">ZERO_CLOCK</div>
-            <div class="wm-header-center">
-                <span class="led green" id="led-status"></span>
-                <span class="header-stat" id="wm-uptime">UPTIME: 00:00:00</span>
-                <span class="sep">|</span>
-                <span class="header-stat" id="wm-date">-- / -- // --:--</span>
-            </div>
-            <div class="wm-model-tag">MODEL: PORTFOLIO_v4.exe</div>
+  <!-- Gritty Texture Overlay Layer -->
+  <div class="noise-overlay"></div>
+
+  <div class="page-container">
+
+    <!-- ════════════════════════
+         1. HEADER SECTION
+    ════════════════════════ -->
+    <header class="ad-header">
+      <div class="header-logo-wrap">
+        <span class="logo-bold">ZERO_CLOCK</span>
+        <span class="logo-outline">2000</span>
+      </div>
+
+      <nav class="header-nav">
+        <a href="#about" class="nav-anchor">ABOUT</a>
+        <a href="#achievements" class="nav-anchor">ACHIEVEMENTS</a>
+        <a href="#ambitions" class="nav-anchor">AMBITIONS</a>
+        <a href="#contact" class="nav-anchor">CONTACT</a>
+      </nav>
+
+      <!-- Audio Deck Controls (Compact Aesthetic Dial) -->
+      <div class="header-audio-controls">
+        <button id="btn-sound-mute" class="audio-btn" title="Toggle sound clicks">MUTE/UNMUTE SOUNDS</button>
+        <button id="theme-toggle" class="audio-btn" title="Change Theme">Light/Dark Theme</button>
+      </div>
+    </header>
+
+    <!-- ════════════════════════
+         2. HERO SECTION
+    ════════════════════════ -->
+    <section class="ad-hero" id="hero">
+      <!-- Sunset grid floor lines backdrop -->
+      <div class="hero-backdrop">
+        <div class="backdrop-gradient"></div>
+        <div class="backdrop-grid"></div>
+      </div>
+
+      <div class="hero-grid-layout">
+        <!-- Left Column: Configuration Specs Card -->
+        <div class="hero-specs-card">
+          <div class="specs-card-header">CAR SPECIFICATIONS</div>
+          <table class="specs-table">
+            <tr>
+              <td>MODEL NAME:</td>
+              <td class="val">Vivaan Shandilya</td>
+            </tr>
+            <tr>
+              <td>HORSEPOWER:</td>
+              <td class="val">Robotics, Coding{Python, JS, C++, HTML, CSS etc.}, Mechanics</td>
+            </tr>
+            <tr>
+              <td>TOP SPEED:</td>
+              <td class="val">Aspiring Mechatronics Engineer</td>
+            </tr>
+            <tr>
+              <td>MILEAGE:</td>
+              <td class="val">Always learning and making...</td>
+            </tr>
+          </table>
+          <p class="specs-footnote">*Has Experience with Arduino, ESP32, ESP8266 etc. and other microcontrollers and
+            coding.</p>
         </div>
 
-        <!-- THE CRT TELEVISION SET WRAPPER -->
-        <div class="crt-tv-wrap">
-
-            <!-- CRT CASING (uses real CRT image as bg) -->
-            <div class="crt-casing">
-
-                <!-- The screen overlay sits OVER the CRT image, positioned to match the screen area -->
-                <div class="crt-screen-region">
-
-                    <!-- CRT visual filters -->
-                    <div class="crt-scanlines"></div>
-                    <div class="crt-flicker"></div>
-                    <div class="crt-vignette"></div>
-                    <div class="crt-noise"></div>
-                    <div class="crt-glow-border"></div>
-
-                    <!-- Screen content (tabs + panels) -->
-                    <div class="screen-ui" id="screen-ui">
-
-                        <!-- TAB BAR -->
-                        <div class="tab-bar">
-                            <button class="tab active" data-tab="bio">SYS_BIO</button>
-                            <button class="tab" data-tab="achv">ACHVMT</button>
-                            <button class="tab" data-tab="quest">QUESTS</button>
-                            <button class="tab" data-tab="comms">COMMS</button>
-                            <span class="online-badge blink">⬤ LIVE</span>
-                        </div>
-
-                        <!-- PANEL: BIO -->
-                        <div class="panel active" id="tab-bio">
-                            <div class="boot-log">
-                                <span>// BIOS BOOT OK — STUDENT_PROFILE.SYS LOADED</span>
-                            </div>
-                            <div class="bio-grid">
-                                <div class="avatar-wrap">
-                                    <img src="assets/avatar.png" alt="avatar" class="avatar-img"
-                                        onerror="this.src='https://api.dicebear.com/7.x/pixel-art/svg?seed=zero&backgroundColor=001122'">
-                                    <div class="avatar-scan"></div>
-                                </div>
-                                <div class="bio-specs">
-                                    <h1 class="bio-name">[YOUR NAME]</h1>
-                                    <p class="bio-role">// CODENAME: STUDENT_DEVELOPER</p>
-                                    <div class="spec-rows">
-                                        <div class="spec-row"><span class="sk">CLASS</span><span class="sv">FULL-STACK
-                                                DISCIPLE</span></div>
-                                        <div class="spec-row"><span class="sk">FOCUS</span><span class="sv">INTERACTIVE
-                                                SHADERS</span></div>
-                                        <div class="spec-row"><span class="sk">ALIGN</span><span class="sv">CREATIVE
-                                                CHAOTIC</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="bio-lower">
-                                <div class="typewriter-area">
-                                    <p class="tw-text">&gt; <span id="typewriter"></span><span
-                                            class="cursor blink">_</span></p>
-                                </div>
-                                <div class="diag-box">
-                                    <div class="diag-row"><span class="dk">GUI STABILITY</span><span
-                                            class="dv">99.8%</span></div>
-                                    <div class="diag-row"><span class="dk">CRT REFRESH</span><span
-                                            class="dv">60Hz</span></div>
-                                    <div class="diag-row"><span class="dk">GRID MATRIX</span><span
-                                            class="dv">ACTIVE</span></div>
-                                    <div class="diag-row"><span class="dk">SOUND DRIVER</span><span
-                                            class="dv">SYNTH_OK</span></div>
-                                </div>
-                            </div>
-                            <div class="directives">
-                                <span class="dir-lbl">CORE DIRECTIVES //</span>
-                                <span class="dir">1. Code clean, scalable interfaces.</span>
-                                <span class="dir">2. Study hardware-accelerated rendering.</span>
-                                <span class="dir">3. Build tactical retro-tech designs.</span>
-                            </div>
-                        </div>
-
-                        <!-- PANEL: ACHIEVEMENTS -->
-                        <div class="panel" id="tab-achv">
-                            <div class="panel-title">DATABASE_ACHIEVEMENTS.LOG</div>
-                            <p class="panel-desc">// HISTORICAL LOG OF UNLOCKED ATTAINMENTS &amp; MILESTONES:</p>
-                            <div class="table-scroll">
-                                <table class="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>MILESTONE</th>
-                                            <th>TYPE</th>
-                                            <th>DATE</th>
-                                            <th>STATUS</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="id-col">AC-01</td>
-                                            <td>Hackathon Winner // Best Web UI Innovation</td>
-                                            <td>Competition</td>
-                                            <td>DEC 2025</td>
-                                            <td><span class="tag ok">[ UNLOCKED ]</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="id-col">AC-02</td>
-                                            <td>Dean's Honor Scholarship (Top 5% Rank)</td>
-                                            <td>Education</td>
-                                            <td>OCT 2025</td>
-                                            <td><span class="tag ok">[ UNLOCKED ]</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="id-col">AC-03</td>
-                                            <td>Published NPM Utility Package (340+ Stars)</td>
-                                            <td>Open Source</td>
-                                            <td>JUL 2025</td>
-                                            <td><span class="tag ok">[ UNLOCKED ]</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="id-col">AC-04</td>
-                                            <td>Best In Class — Generative Graphics Final</td>
-                                            <td>Academic</td>
-                                            <td>MAY 2025</td>
-                                            <td><span class="tag ok">[ UNLOCKED ]</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="id-col">AC-05</td>
-                                            <td>Zero-to-Ship 72hr Challenge — Top 10</td>
-                                            <td>Freelance</td>
-                                            <td>FEB 2025</td>
-                                            <td><span class="tag ok">[ UNLOCKED ]</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="id-col">AC-06</td>
-                                            <td>Contribute to Core Web Vitals Tooling</td>
-                                            <td>Research</td>
-                                            <td>Q4 2026</td>
-                                            <td><span class="tag pending">[ PENDING ]</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- PANEL: QUESTS -->
-                        <div class="panel" id="tab-quest">
-                            <div class="panel-title">ACTIVE_QUEST_BOARD.SYS</div>
-                            <div class="quest-layout">
-                                <div class="quest-col">
-                                    <div class="col-lbl">// ACTIVE MISSIONS</div>
-                                    <div class="quest-card">
-                                        <div class="quest-head"><span class="qnum">QUEST #01</span><span
-                                                class="qxp">+6200 XP</span></div>
-                                        <div class="quest-name">Ship WebGL Shader Playground</div>
-                                        <div class="quest-desc">Interactive tool for GLSL fragment shader creation and
-                                            parameter tuning in browser.</div>
-                                        <div class="prog-wrap">
-                                            <div class="prog-fill" style="width:72%"></div><span
-                                                class="prog-pct">72%</span>
-                                        </div>
-                                    </div>
-                                    <div class="quest-card">
-                                        <div class="quest-head"><span class="qnum">QUEST #02</span><span
-                                                class="qxp">+4500 XP</span></div>
-                                        <div class="quest-name">Architect Offline-First P2P Sync</div>
-                                        <div class="quest-desc">Peer-to-peer data nodes utilizing WebRTC and CRDT
-                                            document arrays.</div>
-                                        <div class="prog-wrap">
-                                            <div class="prog-fill" style="width:40%"></div><span
-                                                class="prog-pct">40%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="skills-col">
-                                    <div class="col-lbl">// SKILL MATRIX</div>
-                                    <ul class="skill-list">
-                                        <li><span class="sn">JavaScript Core (ESNext)</span>
-                                            <div class="dots"><span class="dot on"></span><span
-                                                    class="dot on"></span><span class="dot on"></span><span
-                                                    class="dot on"></span><span class="dot on"></span></div>
-                                        </li>
-                                        <li><span class="sn">Rust / WASM Compiling</span>
-                                            <div class="dots"><span class="dot on"></span><span
-                                                    class="dot on"></span><span class="dot on"></span><span
-                                                    class="dot"></span><span class="dot"></span></div>
-                                        </li>
-                                        <li><span class="sn">CSS Grid/Flex Layouts</span>
-                                            <div class="dots"><span class="dot on"></span><span
-                                                    class="dot on"></span><span class="dot on"></span><span
-                                                    class="dot on"></span><span class="dot"></span></div>
-                                        </li>
-                                        <li><span class="sn">Web Audio DSP</span>
-                                            <div class="dots"><span class="dot on"></span><span
-                                                    class="dot on"></span><span class="dot on"></span><span
-                                                    class="dot"></span><span class="dot"></span></div>
-                                        </li>
-                                    </ul>
-                                    <div class="mini-log">
-                                        <div>&gt; WASM compiler pipeline active.</div>
-                                        <div>&gt; Web Audio DSP module loaded.</div>
-                                        <div>&gt; Shader pipeline ready.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PANEL: COMMS -->
-                        <div class="panel" id="tab-comms">
-                            <div class="panel-title">COMMUNICATIONS_TERMINAL.IO</div>
-                            <div class="comms-grid">
-                                <div class="freq-col">
-                                    <div class="col-lbl">// TRANSMISSION NODES</div>
-                                    <div class="freq-links">
-                                        <a href="mailto:placeholder@example.com" class="freq-btn" data-proto="SMTP">
-                                            <span class="proto">[SMTP]</span><span>placeholder@example.com</span>
-                                        </a>
-                                        <a href="https://github.com" target="_blank" class="freq-btn" data-proto="SSH">
-                                            <span class="proto">[SSH]</span><span>github.com/placeholder</span>
-                                        </a>
-                                        <a href="https://linkedin.com" target="_blank" class="freq-btn"
-                                            data-proto="SSL">
-                                            <span class="proto">[SSL]</span><span>linkedin.com/in/placeholder</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="tx-col">
-                                    <div class="col-lbl">// SIGNAL TRANSMITTER</div>
-                                    <div class="retro-form" id="transmitter-form">
-                                        <div class="f-row">
-                                            <label>SENDER_ID:</label>
-                                            <input type="text" id="tx-sender" placeholder="YOUR NAME"
-                                                autocomplete="off">
-                                        </div>
-                                        <div class="f-row">
-                                            <label>RETURN_ADDR:</label>
-                                            <input type="email" id="tx-return" placeholder="YOUR@EMAIL.COM"
-                                                autocomplete="off">
-                                        </div>
-                                        <div class="f-row f-col">
-                                            <label>MESSAGE:</label>
-                                            <textarea id="tx-payload" placeholder="TYPE TRANSMISSION..."
-                                                rows="3"></textarea>
-                                        </div>
-                                        <button type="button" class="tx-send" id="tx-btn">
-                                            <span>INITIALIZE SIGNAL TRANSMISSION</span>
-                                            <span class="tx-arrows blink">▶▶</span>
-                                        </button>
-                                    </div>
-                                    <div class="tx-log" id="tx-log"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /screen-ui -->
-
-                </div>
-                <!-- /crt-screen-region -->
-
+        <!-- Center: Abstract CSS/SVG Wireframe Graphic -->
+        <div class="hero-graphic-panel">
+          <div class="wireframe-container">
+            <div class="wireframe-circle"></div>
+            <div class="wireframe-square"></div>
+            <div class="wireframe-lines">
+              <span></span><span></span><span></span><span></span>
             </div>
-            <!-- /crt-casing -->
-
-            <!-- CONTROLS STRIP BELOW SCREEN -->
-            <div class="crt-controls">
-                <div class="ctrl-brand">ZERO_CLOCK</div>
-                <div class="ctrl-dials">
-                    <div class="dial" id="dial-brightness" title="Brightness">
-                        <div class="dial-knob"></div>
-                        <span class="dial-lbl">BRIGHT</span>
-                    </div>
-                    <div class="dial" id="dial-theme" title="Color Theme">
-                        <div class="dial-knob"></div>
-                        <span class="dial-lbl">THEME</span>
-                    </div>
-                    <div class="dial" id="dial-audio" title="Audio">
-                        <div class="dial-knob"></div>
-                        <span class="dial-lbl">AUDIO</span>
-                    </div>
-                </div>
-                <div class="pwr-wrap">
-                    <button id="power-btn" class="pwr-btn active" title="Toggle Power">
-                        <span class="pwr-cap"></span>
-                    </button>
-                    <span class="pwr-lbl">PWR</span>
-                    <span class="pwr-led active" id="power-led"></span>
-                </div>
+            <div class="technical-markings">
+              <span class="mark">C-01</span>
+              <span class="mark">R-2000</span>
+              <span class="mark">SCALE 1:1</span>
             </div>
-
+          </div>
         </div>
-        <!-- /crt-tv-wrap -->
+      </div>
 
-        <!-- CASSETTE TAPE BOTTOM STRIP -->
-        <div class="wm-footer">
-            <div class="reel left">
-                <div class="reel-hub"></div>
-                <div class="spoke"></div>
-                <div class="spoke s2"></div>
-                <div class="spoke s3"></div>
-            </div>
-            <div class="wm-tagline">THE ONE AND ONLY</div>
-            <div class="reel right">
-                <div class="reel-hub"></div>
-                <div class="spoke"></div>
-                <div class="spoke s2"></div>
-                <div class="spoke s3"></div>
-            </div>
+      <!-- Hero Typography Overlay -->
+      <div class="hero-text-overlay">
+        <div class="hero-t-for-two">
+          <span class="label">NOW A WEBSITE DEVELOPER</span>
+          <p class="desc">Passionate towards Robotics, Music, Coding, Mechanical Design and engineering, etc... The
+            website has been designed after a 90s car advertisement.</p>
         </div>
 
-    </div>
-    <!-- /wm-device -->
+        <h2 class="hero-main-title">
+          <span class="title-line-1">VIVAAN SHANDILYA</span>
+          <span class="title-line-2">ROBOTICS, CODING, MUSIC, AND TECH ENTHUSIAST</span>
+        </h2>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- ════════════════════════
+         3. ABOUT MYSELF SECTION
+    ════════════════════════ -->
+    <section class="ad-section ad-about" id="about">
+      <div class="section-badge">[SECTION-01: ABOUT_MYSELF]</div>
+
+      <div class="about-grid">
+        <!-- Editorial Serif Narrative Column -->
+        <div class="about-narrative">
+          <div class="narrative-highlight">
+            Smart and Innovative, but always improving.
+            <span class="slogan">Called by peers as "one of the best minds in the industry"</span>
+          </div>
+          <div class="narrative-columns">
+            <p>I am a 14-year-old student from Gurugaon, Haryana, with a passion for robotics, coding, music, and
+              mechanical engineering. I am currently pursuing a 9th Grade at Manav Rachna International School, Sec-51.
+            </p>
+          </div>
+        </div>
+
+        <!-- System Monitor & Starburst Badge Column -->
+        <div class="about-console-col">
+          <div class="avatar-holder">
+            <img class="avatar-img" src="assets/avatar.png" alt="avatar"
+              onerror="this.src='https://api.dicebear.com/7.x/pixel-art/svg?seed=zeroclock&backgroundColor=ffb834'">
+          </div>
+
+          <!-- Typewriter Output Box -->
+          <div class="terminal-log-box">
+            <div class="terminal-header">
+              <span class="dot"></span>
+              <span class="title">MONITOR.SYS</span>
+            </div>
+            <div class="terminal-body">
+              <span class="prompt">›</span>
+              <span id="typewriter"></span><span class="caret">▋</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════
+         4. ACHIEVEMENTS SECTION
+    ════════════════════════ -->
+    <section class="ad-section ad-achievements" id="achievements">
+      <div class="section-badge">[SECTION-02: SPECIAL_ACHIEVEMENTS]</div>
+
+      <div class="achievements-header">
+        <h2 class="achv-title">SPECIAL VALUE BUNDLE</h2>
+        <span class="achv-slogan">BUT WAIT! THERE'S MORE!</span>
+      </div>
+
+      <!-- Dotted Coupon Card -->
+      <div class="coupon-board">
+        <div class="coupon-scissors">✂ ----------------------------------------------------</div>
+        <div class="coupon-inner">
+          <div class="achievements-list">
+            <div class="achv-row">
+              <span class="id">★ AC-01</span>
+              <span class="desc">Hackathon — Best Web UI Innovation</span>
+              <span class="status unlocked">UNLOCKED!</span>
+            </div>
+            <div class="achv-row">
+              <span class="id">★ AC-02</span>
+              <span class="desc">Dean's Honor Scholarship · Top 5%</span>
+              <span class="status unlocked">UNLOCKED!</span>
+            </div>
+            <div class="achv-row">
+              <span class="id">★ AC-03</span>
+              <span class="desc">NPM Package — 340+ Stars</span>
+              <span class="status unlocked">UNLOCKED!</span>
+            </div>
+            <div class="achv-row">
+              <span class="id">★ AC-04</span>
+              <span class="desc">Best In Class — Generative Graphics</span>
+              <span class="status unlocked">UNLOCKED!</span>
+            </div>
+            <div class="achv-row">
+              <span class="id">★ AC-05</span>
+              <span class="desc">Zero-to-Ship 72hr Challenge · Top 10</span>
+              <span class="status unlocked">UNLOCKED!</span>
+            </div>
+            <div class="achv-row">
+              <span class="id">★ AC-06</span>
+              <span class="desc">Core Web Vitals Tooling Contribution</span>
+              <span class="status pending">PENDING...</span>
+            </div>
+          </div>
+
+          <div class="coupon-footer">
+            <div class="promo-stamp">ALL INCLUDED!</div>
+            <div class="coupon-specs-text">
+              * VALUED PACKETS INC. NO MONTHLY SYSTEM CHARGES. 100% SECURE.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════
+         5. AMBITIONS SECTION
+    ════════════════════════ -->
+    <section class="ad-section ad-ambitions" id="ambitions">
+      <div class="section-badge">[SECTION-03: FUTURE_AMBITIONS]</div>
+
+      <div class="ambitions-header">
+        <h2 class="amb-title">1987 PRODUCT PIPELINE</h2>
+        <span class="amb-slogan">DEALER RESERVATIONS NOW OPEN FOR NEXT DEPLOYMENTS</span>
+      </div>
+
+      <div class="ambitions-grid">
+        <!-- Ambition Card 1 -->
+        <div class="ambition-card">
+          <div class="card-tag">AM-01</div>
+          <h3 class="card-title">WEBGPU RENDER ENGINES</h3>
+          <p class="card-desc">Building hardware-accelerated 3D graphics and complex computing pipelines inside browser
+            viewports. Bypassing traditional WebGL overheads for fluid simulations.</p>
+          <div class="card-metrics">
+            <span class="rating">ESTIMATED: ★★★★★</span>
+            <span class="badge">TURBO</span>
+          </div>
+        </div>
+
+        <!-- Ambition Card 2 -->
+        <div class="ambition-card">
+          <div class="card-tag">AM-02</div>
+          <h3 class="card-title">DECENTRALIZED P2P MESH</h3>
+          <p class="card-desc">Integrating serverless WebRTC connections to design private, local multi-user node
+            channels directly between browser contexts without central host reliance.</p>
+          <div class="card-metrics">
+            <span class="rating">ESTIMATED: ★★★★☆</span>
+            <span class="badge">Hi-Fi</span>
+          </div>
+        </div>
+
+        <!-- Ambition Card 3 -->
+        <div class="ambition-card">
+          <div class="card-tag">AM-03</div>
+          <h3 class="card-title">WASM COMPILER PIPELINES</h3>
+          <p class="card-desc">Compiling high-speed native logic written in systems languages directly into assembly
+            components for lightning fast client rendering metrics.</p>
+          <div class="card-metrics">
+            <span class="rating">ESTIMATED: ★★★★★</span>
+            <span class="badge">16-VALVE</span>
+          </div>
+        </div>
+
+        <!-- Ambition Card 4 -->
+        <div class="ambition-card">
+          <div class="card-tag">AM-04</div>
+          <h3 class="card-title">DISTRIBUTED CACHE UTILITIES</h3>
+          <p class="card-desc">Designing user-friendly toolkits to optimize Core Web Vitals, track resource budgets, and
+            execute automated tree-shaking evaluations in build steps.</p>
+          <div class="card-metrics">
+            <span class="rating">ESTIMATED: ★★★★☆</span>
+            <span class="badge">ECO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════
+         6. CONTACT SECTION
+    ════════════════════════ -->
+    <section class="ad-section ad-contact" id="contact">
+      <div class="section-badge">[SECTION-04: ORDER_COUPON]</div>
+
+      <div class="contact-header-strip">
+        <h2 class="contact-brand-title">ORDER DIRECT HOTLINE</h2>
+        <span class="contact-brand-slogan">OPERATORS ARE STANDING BY 24/7. DIAL NOW!</span>
+      </div>
+
+      <div class="contact-split">
+        <!-- Dial-In Registry Info -->
+        <div class="contact-directory">
+          <a href="mailto:[EMAIL_ADDRESS]" class="directory-plate">
+            <span class="lbl">Email</span>
+            <span class="val">No email for you >:)</span>
+          </a>
+          <a href="https://github.com/Blutorils-Codelover86" target="_blank" class="directory-plate">
+            <span class="lbl">Github</span>
+            <span class="val">github.com/Blutorils-Codelover86</span>
+          </a>
+          <a href="https://www.instagram.com/hachi.roku_akina" target="_blank" class="directory-plate">
+            <span class="lbl">Instagram</span>
+            <span class="val">@hachi.roku_akina</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════
+         7. FOOTER SECTION
+    ════════════════════════ -->
+    <footer class="ad-footer">
+      <div class="footer-grid-border"></div>
+      <div class="footer-main-row">
+        <p class="footer-legal-copy">
+          © 1986-2026 Blu.t.r.l.s Digital Systems, Inc. Spec sheets and assets are subject to change. Buckle up!
+        </p>
+        <div class="footer-stamps">
+          <span class="footer-stamp-logo">TOYOTA AESTHETIC</span>
+          <span class="footer-time-date" id="vcr-time">JUN. 09 2026 PM 07:16:50</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
